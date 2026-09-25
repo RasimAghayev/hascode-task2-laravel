@@ -15,16 +15,8 @@ class AuthController extends Controller
             'name' => 'required|max:55',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6'
-        ],[
-            'name.required' => 'Name field is required.',
-            'password.required' => 'Password field is required.',
-            'email.required' => 'Email field is required.',
-            'email.email' => 'Email field must be email address.'
         ]);
 
-//        if($validator->fails()){
-//            return response(['error' => $validator->errors()]);
-//        }
         $validator['password'] = bcrypt($validator['password']);
         $user = User::create($validator);
 
@@ -42,12 +34,8 @@ class AuthController extends Controller
             'password' => 'required|min:6'
         ]);
 
-//        if($validator->fails()){
-//            return response(['error' => $validator->errors()]);
-//        }
-
         if (!auth()->attempt($data)) {
-            return response(['message' => 'Login credentials are invaild']);
+            return response(['message' => 'Login credentials are invalid']);
         }
 
         $accessToken = auth()->user()->createToken('authToken')->accessToken;

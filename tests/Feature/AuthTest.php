@@ -36,7 +36,7 @@ class AuthTest extends TestCase
         User::create([
             'name' => 'Test',
             'email'=> $email = time().'@example.com',
-            'password' => $password = bcrypt('123456789')
+            'password' => $password = '123456789'
         ]);
         $response = $this->json('POST','api/login',[
             'email' => $email,

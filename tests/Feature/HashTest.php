@@ -58,7 +58,7 @@ class HashTest extends TestCase
         $hash = $this->test_create_hash()->hash;
         $response = $this->withHeaders([
             'Authorization' => 'Bearer '. $token,
-        ])->json('GET','api/hash/{$hash}');
+             ])->json('GET','api/hash/'.$hash);
 
         //Write the response in laravel.log
         \Log::info(1, [$response->getContent()]);

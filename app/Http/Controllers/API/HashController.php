@@ -39,15 +39,11 @@ class HashController extends Controller
         $validator['hash'] = sha1($validator['data']);
         $oldHash=$this->showData($validator['data']);
         $validator['data'] = preg_replace(array('/\s{2,}/', '/[\t\n]/'), ' ', $validator['data']);
-//        dd($oldHash);
-        print_r($oldHash);
-            die();
         $validator['hash0'] = ($oldHash==0)?sha1($validator['data']):$oldHash['hash0'];
 
         $hash = Hash::create($validator);
 
-//        return response(['hash' => new HashResource($hash), 'message' => 'Hash created successfully']);
-        return response(['hash' => $hash->hash]);
+        return response(['hash' => new HashResource($hash), 'message' => 'Hash created successfully']);
     }
 
     /**
