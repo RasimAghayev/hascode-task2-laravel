@@ -1,4 +1,6 @@
 # hascode-task2-laravel
+![Views](https://hits.sh/github.com/RasimAghayev/hascode-task2-laravel.svg?label=views&color=0e75b6)
+
 
 A Laravel 10 REST API with Hash CRUD operations and token-based authentication via Passport.
 
